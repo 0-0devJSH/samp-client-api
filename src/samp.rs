@@ -66,6 +66,19 @@ pub enum Gamestate {
     Restarting,
 }
 
+impl From<v037dl::Gamestate> for Gamestate {
+    fn from(state: v037dl::Gamestate) -> Gamestate {
+        match state {
+            v037dl::Gamestate::None => Gamestate::None,
+            v037dl::Gamestate::WaitConnect => Gamestate::WaitConnect,
+            v037dl::Gamestate::Connecting => Gamestate::Connecting,
+            v037dl::Gamestate::Connected => Gamestate::Connected,
+            v037dl::Gamestate::AwaitJoin => Gamestate::AwaitJoin,
+            v037dl::Gamestate::Restarting => Gamestate::Restarting,
+        }
+    }
+}
+
 impl From<v037r3::Gamestate> for Gamestate {
     fn from(state: v037r3::Gamestate) -> Gamestate {
         match state {
@@ -101,6 +114,10 @@ pub fn gamestate() -> Gamestate {
         Version::V037R3 => v037r3::CNetGame::get()
             .map(|netgame| netgame.gamestate().into())
             .unwrap_or(Gamestate::None),
+
+        Version::V037DL => v037dl::CNetGame::get()
+        .map(|netgame| netgame.gamestate().into())
+        .unwrap_or(Gamestate::None),
 
         _ => Gamestate::None,
     }
