@@ -61,23 +61,23 @@ pub struct DXUTControl {
 
 #[repr(C, packed)]
 pub struct Dialog {
-    // pub m_pDevice: *mut (), // IDirect3DDevice9
-    // pub m_position: [std::os::raw::c_ulong; 2],
-    // pub m_size: [std::os::raw::c_ulong; 2],
-    // pub m_buttonOffset: [std::os::raw::c_ulong; 2],
-    // pub m_pDialog: *mut (),           // CDXUTDialog
-    // pub m_pListbox: *mut (),          // CDXUTListBox
-    // pub m_pEditbox: *mut DXUTControl, // CDXUTIMEEditBox
-    // pub m_bIsActive: BOOL,
-    // pub m_nType: std::os::raw::c_int,
-    // pub m_nId: std::os::raw::c_int,
-    // pub m_szText: *mut std::os::raw::c_char,
-    // pub m_textSize: [std::os::raw::c_int; 2],
-    // pub m_szCaption: [std::os::raw::c_char; 65],
-    // pub m_bServerside: BOOL,
+    pub m_pDevice: *mut (), // IDirect3DDevice9
+    pub m_position: [std::os::raw::c_ulong; 2],
+    pub m_size: [std::os::raw::c_ulong; 2],
+    pub m_buttonOffset: [std::os::raw::c_ulong; 2],
+    pub m_pDialog: *mut (),           // CDXUTDialog
+    pub m_pListbox: *mut (),          // CDXUTListBox
+    pub m_pEditbox: *mut DXUTControl, // CDXUTIMEEditBox
+    pub m_bIsActive: BOOL,
+    pub m_nType: std::os::raw::c_int,
+    pub m_nId: std::os::raw::c_int,
+    pub m_szText: *mut std::os::raw::c_char,
+    pub m_textSize: [std::os::raw::c_int; 2],
+    pub m_szCaption: [std::os::raw::c_char; 65],
+    pub m_bServerside: BOOL,
 
-       pub m_pDevice: *mut (),
-       pub m_iTextPoxX: 
+    //    pub m_pDevice: *mut (),
+    //    pub m_iTextPoxX: 
 }
 
 impl Dialog {
