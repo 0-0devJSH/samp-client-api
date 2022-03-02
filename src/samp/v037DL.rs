@@ -2,16 +2,13 @@
 /*
     - Pointer Offset
 
-    SAMP_INFO_OFFSET(CNETGAME)                                                      0x21A0F8
-    SAMP_CHAT_INPUT_INFO_OFFSET(CINPUT)                                             0x21A0E8
-    SAMP_MISC_INFO(CGAME)                                                           0x21A10C
-    SAMP_FUNC_TOGGLECURSOR(CGAME_SETCURSORMODE)                                     0x9BD30
-    SAMP_FUNC_CURSORUNLOCKACTORCAM(CGAME_PROCESSINPUTENABLING)                      0x9BC10
-    SAMP_DIALOG_INFO_OFFSET(CDIALOG)                                                0x21A0B8
-
-
-
-
+    SAMP_INFO_OFFSET(CNETGAME)                                                      0x21A0F8 | 0x2ACA24
+    SAMP_CHAT_INPUT_INFO_OFFSET(CINPUT)                                             0x21A0E8 | 0x2ACA14
+    SAMP_MISC_INFO(CGAME)                                                           0x21A10C | 0x2ACA3C
+    SAMP_FUNC_TOGGLECURSOR(CGAME_SETCURSORMODE)                                     0x9BD30  | 0xA0530
+    SAMP_FUNC_CURSORUNLOCKACTORCAM(CGAME_PROCESSINPUTENABLING)                      0x9BC10  | 0xA0410
+    SAMP_DIALOG_INFO_OFFSET(CDIALOG)                                                0x21A0B8 | 0x2AC9E0
+    SAMP_FUNC_DEATH??(CDEATHWINDOW_DRAW)                                            0x66640  | 0x55E0
 
 
 
@@ -27,13 +24,13 @@ use crate::gta::matrix::{CVector, RwMatrix};
 use std::ffi::{c_void, CStr};
 use std::net::{Ipv4Addr, SocketAddr};
 
-pub const CNETGAME: usize = 0x21A0F8;
-pub const CINPUT: usize = 0x21A0E8;
-pub const CGAME: usize = 0x21A10C;
-pub const CGAME_SETCURSORMODE: usize = 0x9BD30;
-pub const CGAME_PROCESSINPUTENABLING: usize = 0x9BC10;
-pub const CDIALOG: usize = 0x21A0B8;
-pub const CDEATHWINDOW_DRAW: usize = 0x66640;
+pub const CNETGAME: usize = 0x2ACA24;
+pub const CINPUT: usize = 0x2ACA14;
+pub const CGAME: usize = 0x2ACA3C;
+pub const CGAME_SETCURSORMODE: usize = 0xA0530;
+pub const CGAME_PROCESSINPUTENABLING: usize = 0xA0410;
+pub const CDIALOG: usize = 0x2AC9E0;
+pub const CDEATHWINDOW_DRAW: usize = 0x55E0;
 
 const SPEC_MODE_VEHICLE: i8 = 3;
 const SPEC_MODE_PLAYER: i8 = 4;
@@ -619,6 +616,7 @@ impl CLocalPlayer {
 pub struct CLocalPlayer_SpawnInfo {
     pub m_nTeam: NUMBER,
     pub m_nSkin: std::os::raw::c_int,
+    pub m_cnSkin: std::os::raw::c_int, // 0.3DL CUSTOM SKIN
     pub field_c: std::os::raw::c_char,
     pub m_position: CVector,
     pub m_fRotation: f32,

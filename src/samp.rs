@@ -9,6 +9,7 @@ pub mod players;
 pub mod spawnscreen;
 pub mod v037;
 pub mod v037r3;
+pub mod v037dl;
 pub mod version;
 
 use version::{version, Version};

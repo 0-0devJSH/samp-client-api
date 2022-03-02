@@ -12,6 +12,7 @@ pub enum Version {
     V037,
     V037R2, // also unsupported
     V037R3,
+    V037DL, // 0.3DL 
     Unknown,
 }
 
@@ -48,6 +49,8 @@ pub fn version() -> Version {
                 return Version::Unknown;
             }
 
+            // SAMP 0.3DL CMP 528D44240C508D7E09E
+
             let fileinfo = &*(fileinfo_ptr as *const FixedFileInfo);
 
             let major = fileinfo.file_version_ms & 0xFF;
@@ -57,6 +60,7 @@ pub fn version() -> Version {
             let version = match (major, minor, rc) {
                 (3, 7, 0) => Version::V037,
                 (3, 7, 2) => Version::V037R3,
+                (3, 8, 0) => Version::V037DL, // not working
                 _ => Version::Unknown,
             };
 
