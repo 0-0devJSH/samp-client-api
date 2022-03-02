@@ -30,6 +30,7 @@ impl Input {
         let input_addr = match version() {
             Version::V037 => super::v037::CINPUT,
             Version::V037R3 => super::v037r3::CINPUT,
+            Version::V037DL => super::v037dl::CINPUT,
             _ => return None,
         };
 
@@ -60,20 +61,23 @@ pub struct DXUTControl {
 
 #[repr(C, packed)]
 pub struct Dialog {
-    pub m_pDevice: *mut (), // IDirect3DDevice9
-    pub m_position: [std::os::raw::c_ulong; 2],
-    pub m_size: [std::os::raw::c_ulong; 2],
-    pub m_buttonOffset: [std::os::raw::c_ulong; 2],
-    pub m_pDialog: *mut (),           // CDXUTDialog
-    pub m_pListbox: *mut (),          // CDXUTListBox
-    pub m_pEditbox: *mut DXUTControl, // CDXUTIMEEditBox
-    pub m_bIsActive: BOOL,
-    pub m_nType: std::os::raw::c_int,
-    pub m_nId: std::os::raw::c_int,
-    pub m_szText: *mut std::os::raw::c_char,
-    pub m_textSize: [std::os::raw::c_int; 2],
-    pub m_szCaption: [std::os::raw::c_char; 65],
-    pub m_bServerside: BOOL,
+    // pub m_pDevice: *mut (), // IDirect3DDevice9
+    // pub m_position: [std::os::raw::c_ulong; 2],
+    // pub m_size: [std::os::raw::c_ulong; 2],
+    // pub m_buttonOffset: [std::os::raw::c_ulong; 2],
+    // pub m_pDialog: *mut (),           // CDXUTDialog
+    // pub m_pListbox: *mut (),          // CDXUTListBox
+    // pub m_pEditbox: *mut DXUTControl, // CDXUTIMEEditBox
+    // pub m_bIsActive: BOOL,
+    // pub m_nType: std::os::raw::c_int,
+    // pub m_nId: std::os::raw::c_int,
+    // pub m_szText: *mut std::os::raw::c_char,
+    // pub m_textSize: [std::os::raw::c_int; 2],
+    // pub m_szCaption: [std::os::raw::c_char; 65],
+    // pub m_bServerside: BOOL,
+
+       pub m_pDevice: *mut (),
+       pub m_iTextPoxX: 
 }
 
 impl Dialog {
@@ -81,6 +85,7 @@ impl Dialog {
         let dialog_addr = match version() {
             Version::V037 => super::v037::CDIALOG,
             Version::V037R3 => super::v037r3::CDIALOG,
+            Version::V037DL => super::v037dl::CDIALOG,
             _ => return None,
         };
 
@@ -123,18 +128,21 @@ pub fn show_cursor(show: bool) {
         let cgame_addr = match version() {
             Version::V037 => super::v037::CGAME,
             Version::V037R3 => super::v037r3::CGAME,
+            Version::V037DL => super::v037dl::CGAME,
             _ => return,
         };
 
         let setcursor_addr = match version() {
             Version::V037 => super::v037::CGAME_SETCURSORMODE,
             Version::V037R3 => super::v037r3::CGAME_SETCURSORMODE,
+            Version::V037DL => super::v037dl::CGAME_SETCURSORMODE,
             _ => return,
         };
 
         let process_addr = match version() {
             Version::V037 => super::v037::CGAME_PROCESSINPUTENABLING,
             Version::V037R3 => super::v037r3::CGAME_PROCESSINPUTENABLING,
+            Version::V037DL => super::v037dl::CGAME_PROCESSINPUTENABLING,
             _ => return,
         };
 
